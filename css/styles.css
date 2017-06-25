@@ -73,17 +73,23 @@ iframe#article{
 }
 #overlay span#pop-val{}
 #overlay span#trust-val{}
+
+
+/*true design*/
 #overlay span.good{
     color: #37ae49;
 }
+
+/*false design*/
 #overlay span.bad{
     color: #93000b;
 }
 
-#overlay.hidden{
+
+.overlay-content.hide{
     visibility: collapse;
 }
-#overlay.show{
+.overlay-content.show{
     visibility: visible;
 }
 
