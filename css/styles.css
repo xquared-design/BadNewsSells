@@ -1,17 +1,17 @@
 .wrapper{
-   height: 720px;
+    height: 720px;
 
 }
 
 .header{
-   float: left;
-   width: 100%;
-   background-color: #f4f4f4
+    float: left;
+    width: 100%;
+    background-color: #f4f4f4
 }
 .article{
-   float: left;
-   width: 100%;
-   background-color: #cfcfcf
+    float: left;
+    width: 100%;
+    background-color: #cfcfcf
 }
 
 iframe#article{
@@ -19,18 +19,17 @@ iframe#article{
     height: 100%;
 }
 
-}
 .dataVis{
-   float: right;
-   width: 33%;
-   background-color: #98fb98;
-   height: 100%;
+    float: right;
+    width: 33%;
+    background-color: #98fb98;
+    height: 100%;
     overflow: hidden;
 }
 .footer{
-   float: left;
-   width: 100%;
-   background-color: #f4f4f4;
+    float: left;
+    width: 100%;
+    background-color: #f4f4f4;
 }
 
 /*styling the overlay*/
@@ -39,14 +38,14 @@ iframe#article{
     overflow: hidden;
 }
 #overlay {
-  z-index: 10;
-  position: absolute;
+    z-index: 10;
+    position: absolute;
 
-  height: 350px;
-  width: 500px;
-  top: 0;
-  right: 0;
-  background: rgba(255, 255, 255, 0.95);
+    height: 350px;
+    width: 500px;
+    top: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
 }
 
 #overlay div.overlay-content div {
@@ -73,17 +72,34 @@ iframe#article{
 }
 #overlay span#pop-val{}
 #overlay span#trust-val{}
+
+#overlay {
+    display: none;
+}
+
+#bad {
+    display: none;
+}
+
+#good {
+    display: none;
+}
+
+/*true design*/
 #overlay span.good{
     color: #37ae49;
 }
+
+/*false design*/
 #overlay span.bad{
     color: #93000b;
 }
 
-#overlay.hidden{
+
+.overlay-content.hide{
     visibility: collapse;
 }
-#overlay.show{
+.overlay-content.show{
     visibility: visible;
 }
 
@@ -102,8 +118,8 @@ iframe#article{
 }
 
 body {
-   padding: 0px;
-   margin: 0px;
+    padding: 0px;
+    margin: 0px;
     overflow: hidden;
     font-family: Verdana, Arial, Helvetica, sans-serif;
 }
