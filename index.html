@@ -2,39 +2,146 @@
 
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+    <meta charset="utf-8">
 
-  <title>####</title>
-  <meta name="description" content="">
-  <meta name="author" content="BadNews">
+    <title>####</title>
+    <meta name="description" content="">
+    <meta name="author" content="BadNews">
 
-  <link rel="stylesheet" href="css/styles.css?v=1.0">
+    <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+
 
 </head>
 
-<body onload="document.getElementById('article').style.height = (window.innerHeight) + 'px';">
-    <script>
+<body onload="document.getElementById('article').style.height = (window.innerHeight) + 'px'; ">
 
-    </script>
-  <script src="js/scripts.js"></script>
+<!--  <script src="js/scripts.js"></script>-->
 
-    <div class="wrapper">
+<div class="wrapper">
     <div class="header">
+        <div id="overlay-wrapper">
+            <div id="overlay-ctrl">&times;
+            </div>
+            <div id="overlay">
+                <div id = "bad" class="overlay-content bad">
+                    <div>
+                        <img src="assets/onion-icon-yellow.svg" width="120">
+                        <h1>Warning!</h1><h2>You just bit the onion.</h2>
+                    </div>
+                    <div>
+                        <p>Is this article is rated as not trustworthy.</p>
+                        <p><a href="">Find out how we do the calculation.</a></p>
+                    </div>
+                </div>
+                <div id = "good" class="overlay-content good">
+                    <div>
+                        <img src="assets/strawberry.png" width="120">
+                        <h1>Hurray!</h1><h2>Good for you it's healty news!</h2>
+                    </div>
+                    <div>
+                        <p>Is this article is rated as trustworthy.</p>
+                        <p><a href="">Find out how we do the calculation.</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="wrapper">
+            <div class="article">
+                <iframe id="article" src=""></iframe>
+            </div>
+
+            <!--
+                <div class="dataVis">
+                    right
+                </div>
+            -->
+            <div class="footer">
+
+            </div>
+            <!---->
+        </div>
     </div>
+</div>
 
-    <div class="article">
-          <iframe id="article" src="https://www.washingtonpost.com/politics/beyond-opposing-trump-democrats-keep-searching-for-a-message/2017/06/24/6bb05b54-5857-11e7-a204-ad706461fa4f_story.html"></iframe>
-    </div>
+<!-- JQuery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <div class="dataVis">
-        right
-    </div>
-	    <div class="footer">
+<!--    <script src="js/scripts.js"></script>-->
 
-	    </div>
+<script type="text/javascript">
+
+    document.getElementById("overlay").addEventListener("click", toggleOverlay());
+    function toggleOverlay() {
+        if(!document.getElementById ('overlay').getAttribute('class')=='show'){
+            document.getElementById("overlay").setAttribute('class','hidden');
+            document.getElementById("overlay").setAttribute('style','visibility: hidden;');
+            document.getElementById ("overlay-ctrl").innerHTML='+';
+        }
+        else if (!document.getElementById ('overlay').getAttribute('class')=='hidden'){
+            document.getElementById("overlay").setAttribute('class','show');
+            document.getElementById ("overlay-ctrl").innerHTML='&times;';
+        }
+    }
+</script>
+
+<script type="text/javascript">
+
+    var article_to_test = "https://www.washingtonpost.com/politics/beyond-opposing-trump-democrats-keep-searching-for-a-message/2017/06/24/6bb05b54-5857-11e7-a204-ad706461fa4f_story.html";
+    document.getElementById('article').setAttribute('src', article_to_test);
+    var url_getnewsid = 'https://emonews.herokuapp.com/news?url=' + article_to_test;
+
+    var data = null;
+
+    var urlId = null;
+    var urlResponse = false;
+
+    var getServerBool = function() {
+        $.ajax({
+            type: "GET",
+            url: "https://emonews.herokuapp.com/result?id=" + urlId.id,
+            success: function (response) {
+                console.log("get 2nd response" + response);
+
+                var prediction = JSON.parse(response).result.prediction;
+                console.log(prediction);
+
+                if (prediction === 0) {
+                    document.getElementById("overlay").style.display = "block";
+                    document.getElementById("good").style.display = "block";
+
+                }
+                else {
+                    document.getElementById("overlay").style.display = "block";
+                    document.getElementById("bad").style.display = "block";
+                }
+            }
+        });
+    };
+
+    $.ajax({
+        type: "GET",
+        url: url_getnewsid,
+        success: function(response) {
+            console.log(response);
+
+            urlId = JSON.parse(response);
+            console.log(urlId);
+        }
+    });
+
+    setTimeout(getServerBool, 1500);
 
 
-    </div>
+
+
+
+    //adapt according to url need :
+    xhr.open("GET", url_getnewsid);
+    xhr.send(data);
+</script>
+
 </body>
+
 </html>
