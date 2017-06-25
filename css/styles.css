@@ -10,7 +10,7 @@
 }
 .article{
    float: left;
-   width: 66%;
+   width: 100%;
    background-color: #cfcfcf
 }
 
@@ -32,8 +32,70 @@ iframe#article{
    width: 100%;
    background-color: #f4f4f4;
 }
+
+/*styling the overlay*/
+.ovelay-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+#overlay {
+  z-index: 10;
+  position: absolute;
+  visibility: visible;
+  height: 350px;
+  width: 500px;
+  top: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+#overlay div.overlay-content div {
+    position: relative;
+    padding:  40px;
+    float: left
+}
+#overlay h1, h2, img{
+    margin: 10px auto;
+    float: left
+}
+#overlay h1, h2 {
+    color: #cf850e;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+#overlay p {
+
+    position: relative;
+    float: none;
+
+    bottom: 50px;
+
+
+}
+#overlay span#pop-val{}
+#overlay span#trust-val{}
+#overlay span.good{
+    color: #37ae49;
+}
+#overlay span.bad{
+    color: #93000b;
+}
+
+#overlay-ctrl{
+    display: block;
+    position: absolute;
+    visibility: visible;
+    top: 0;
+    right: 0;
+    color: black;
+    width: 28px;
+    height: 28px;
+    font-size: 24px;
+    z-index: 11;
+}
+
 body {
    padding: 0px;
    margin: 0px;
     overflow: hidden;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
 }

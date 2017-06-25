@@ -12,29 +12,97 @@
 
 </head>
 
-<body onload="document.getElementById('article').style.height = (window.innerHeight) + 'px';">
-    <script>
+<body onload="document.getElementById('article').style.height = (window.innerHeight) + 'px'; ">
 
-    </script>
-  <script src="js/scripts.js"></script>
+<!--    <script src="js/scripts.js"></script>-->
+
+
+
+<!--  <script src="js/scripts.js"></script>-->
 
     <div class="wrapper">
     <div class="header">
+    <div class="overlay-wrapper">
+        <div id="overlay-ctrl" onclick="toggleOverlay()">&times;
+        </div>
+        <div id="overlay">
+          <div class="overlay-content">
+                <div>
+                    <img src="assets/onion-icon-yellow.svg" width="120">
+                    <h1>Warning!</h1><h2>You just bit the onion.</h2>
+                </div>
+                <div>
+                    <p>Is this article is a tranding article with <span id="pop-val">##</span> shares, and it is <span id="trust-val">##%</span> trustworthy.</p>
+                </div>
+            </div>
+
+        </div>
+
 
     </div>
+
+    <div class="wrapper">
 
     <div class="article">
-          <iframe id="article" src="https://www.washingtonpost.com/politics/beyond-opposing-trump-democrats-keep-searching-for-a-message/2017/06/24/6bb05b54-5857-11e7-a204-ad706461fa4f_story.html"></iframe>
+        <iframe id="article" src=""></iframe>
     </div>
 
+<!--
     <div class="dataVis">
         right
     </div>
+-->
 	    <div class="footer">
 
 	    </div>
 
-
+<!---->
     </div>
+ <script>
+    function toggleOverlay() {
+
+        var overlayElem = document.getElementById("overlay");
+        var overlayCtrl = document.getElementById("overlay-ctrl");
+        if (overlayElem.getAttribute("visibility").match("visible")){
+            overlayElem.setAttribute("visibility", "collapsed");
+            overlayCtrl.innerHTML = ("+");
+        }
+        else
+            {
+                overlayElem.setAttribute("visibility", "visible");
+                overlayCtrl.innerHTML = ("&times;");
+            }
+
+
+        }
+        </script>
+
+     <script>
+        var article_to_test = "https://www.washingtonpost.com/politics/beyond-opposing-trump-democrats-keep-searching-for-a-message/2017/06/24/6bb05b54-5857-11e7-a204-ad706461fa4f_story.html";
+        document.getElementById('article').setAttribute('src', article_to_test);
+        var url_getnewsid = 'https://emonews.herokuapp.com/news?url=' + article_to_test;
+
+        var newsid ;
+        var url_getnewsdata = 'https://emonews.herokuapp.com/result?id=' + newsid;
+
+
+
+        var data = null;
+        var xhr = new XMLHttpRequest();
+
+        xhr.addEventListener("readystatechange", function () {
+            console.log("this is the state of things: " + this.readyState);
+          if (this.readyState === 4){
+            console.log(this.responseText);
+          }
+        });
+
+        //adapt according to url need :
+        xhr.open("GET", url_getnewsid);
+        xhr.send(data);
+    </script>
+
+
 </body>
+
 </html>
