@@ -58,7 +58,7 @@ iframe#article{
     float: left
 }
 #overlay h1, h2 {
-    color: #cf850e;
+
     font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 #overlay p {
@@ -86,13 +86,13 @@ iframe#article{
 }
 
 /*true design*/
-#overlay span.good{
-    color: #37ae49;
+#overlay div.overlay-content.good{
+    color: #b75656;;
 }
 
 /*false design*/
-#overlay span.bad{
-    color: #93000b;
+#overlay div.overlay-content.bad{
+    color: #cf850e;
 }
 
 
