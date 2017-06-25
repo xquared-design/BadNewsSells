@@ -10,20 +10,36 @@
 
   <link rel="stylesheet" href="css/styles.css?v=1.0">
 
+
+
 </head>
 
 <body onload="document.getElementById('article').style.height = (window.innerHeight) + 'px'; ">
 
 <!--    <script src="js/scripts.js"></script>-->
 
+<script type="text/javascript">
 
+    document.getElementById ("overlay").addEventListener ("click", toggleOverlay);
+    function toggleOverlay() {
+        if(!document.getElementById ('overlay').getAttribute('class')=='show'){
+            document.getElementById("overlay").setAttribute('class','hidden');
+            document.getElementById("overlay").setAttribute('style','visibility: hidden;');
+            document.getElementById ("overlay-ctrl").innerHTML='+';
+            }
+        else if (!document.getElementById ('overlay').getAttribute('class')=='hidden'){
+            document.getElementById("overlay").setAttribute('class','show');
+            document.getElementById ("overlay-ctrl").innerHTML='&times;';
+        }
+    }
+ </script>
 
 <!--  <script src="js/scripts.js"></script>-->
 
     <div class="wrapper">
     <div class="header">
-    <div class="overlay-wrapper">
-        <div id="overlay-ctrl" onclick="toggleOverlay()">&times;
+    <div id="overlay-wrapper">
+        <div id="overlay-ctrl">&times;
         </div>
         <div id="overlay">
           <div class="overlay-content">
@@ -58,32 +74,15 @@
 
 <!---->
     </div>
- <script>
-    function toggleOverlay() {
-
-        var overlayElem = document.getElementById("overlay");
-        var overlayCtrl = document.getElementById("overlay-ctrl");
-        if (overlayElem.getAttribute("visibility").match("visible")){
-            overlayElem.setAttribute("visibility", "collapsed");
-            overlayCtrl.innerHTML = ("+");
-        }
-        else
-            {
-                overlayElem.setAttribute("visibility", "visible");
-                overlayCtrl.innerHTML = ("&times;");
-            }
 
 
-        }
-        </script>
-
-     <script>
+     <script type="text/javascript">
         var article_to_test = "https://www.washingtonpost.com/politics/beyond-opposing-trump-democrats-keep-searching-for-a-message/2017/06/24/6bb05b54-5857-11e7-a204-ad706461fa4f_story.html";
         document.getElementById('article').setAttribute('src', article_to_test);
         var url_getnewsid = 'https://emonews.herokuapp.com/news?url=' + article_to_test;
 
         var newsid ;
-        var url_getnewsdata = 'https://emonews.herokuapp.com/result?id=' + newsid;
+
 
 
 
@@ -94,6 +93,7 @@
             console.log("this is the state of things: " + this.readyState);
           if (this.readyState === 4){
             console.log(this.responseText);
+            var url_getnewsdata = 'https://emonews.herokuapp.com/result?id=' + newsid;
           }
         });
 
@@ -101,6 +101,8 @@
         xhr.open("GET", url_getnewsid);
         xhr.send(data);
     </script>
+
+
 
 
 </body>

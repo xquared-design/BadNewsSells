@@ -34,14 +34,14 @@ iframe#article{
 }
 
 /*styling the overlay*/
-.ovelay-wrapper {
+#ovelay-wrapper {
     position: relative;
     overflow: hidden;
 }
 #overlay {
   z-index: 10;
   position: absolute;
-  visibility: visible;
+
   height: 350px;
   width: 500px;
   top: 0;
@@ -80,6 +80,13 @@ iframe#article{
     color: #93000b;
 }
 
+#overlay.hidden{
+    visibility: collapse;
+}
+#overlay.show{
+    visibility: visible;
+}
+
 #overlay-ctrl{
     display: block;
     position: absolute;
@@ -91,6 +98,7 @@ iframe#article{
     height: 28px;
     font-size: 24px;
     z-index: 11;
+    background: rgba(255, 255, 255, 0.95);
 }
 
 body {
